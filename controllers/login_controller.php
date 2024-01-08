@@ -1,3 +1,10 @@
+<?php
+// redirect to home if already logged in
+if (isset($_SESSION['user_id'])) {
+    header('location: index.php?page=home');
+}
+
+
 // log in
 if(isset($_POST['login_btn'])){
     $email = $_POST['email'];
@@ -8,7 +15,7 @@ if(isset($_POST['login_btn'])){
         die($e->getMessage());
     }
     if (isset($user) && $user !== false){
-        header('location: index.php?page=dashboard');
+        header('location: index.php?page=home');
         $_SESSION['user_id'] = $user;
     } else {
         header('location: index.php?page=login');
