@@ -1,3 +1,5 @@
+<?php isset($_SESSION['user_id']) ? $user = new User($_SESSION['user_id']) : $user = null; ?>
+
 <!doctype html>
 <html lang="en">
 <head>
