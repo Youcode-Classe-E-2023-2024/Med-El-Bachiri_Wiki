@@ -23,3 +23,7 @@ if(isset($_POST['login_btn'])){
 }
 
 
+// log out
+if (isset($_SESSION['user_id']) && isset($_POST['logout_btn'])) {
+    session_destroy();
+}
