@@ -61,3 +61,23 @@ function getAllCat() {
 
 getAllCat();
 //
+
+// edit category pop up / alert
+function editCatAlert(id) {
+    let currentCatName = document.querySelector('#currentCatName-' + id);
+
+    window.document.body.innerHTML += `
+                <div id="editCatForm" style="left: 50%;" class="shadow-xl fixed top-36 max-w-md mx-auto bg-white rounded p-8 shadow-md">
+                    <h2 class="text-2xl font-bold mb-6">Edit Item</h2>
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+                        <input id="catName-${id}" type="text" value="${currentCatName.innerHTML}" name="" class="w-full border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500">
+                    </div>
+                
+                    <button onclick="editCat(${id})" type="submit" class="bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:shadow-outline-blue active:bg-yellow-800">
+                        Save
+                    </button>
+                </div>`;
+
+}
+//
