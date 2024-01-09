@@ -17,4 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit(true);
         }
     }
+
+    if (isset($data['type']) && !empty($data['type']) && $data['type'] === 'getCat') {
+        $result = Category::getAll();
+        if ($result) {
+            exit(json_encode($result));
+        }
+        exit();
+    }
 }
