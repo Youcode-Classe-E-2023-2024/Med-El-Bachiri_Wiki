@@ -13,7 +13,7 @@ class User
     {
         global $db;
 
-        $query = "SELECT user_id, email, username, image, password FROM users WHERE user_id = :id";
+        $query = "SELECT * FROM users WHERE user_id = :id";
         $stm = $db->prepare($query);
         $stm->bindValue(':id', $id, PDO::PARAM_INT);
         $stm->execute();
