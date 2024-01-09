@@ -120,7 +120,7 @@ class User
         $user = self::checkIfUserExist($email);
         if ($user !== false) {
             if (password_verify($password, $user['password'])) {
-                return $user['user_id'];
+                return $user;
             } else {
                 return false;
             }
