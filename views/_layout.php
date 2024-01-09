@@ -14,46 +14,70 @@
 <body class="bg-gray-100" style="scroll-behavior: smooth;">
 
 <!-- navbar start -->
-    <?php if (isset($_SESSION['user_id'])) { ?>
-        <nav class="bg-white border-gray-200 dark:bg-gray-900 fixed w-full z-50 bg-blue-900 bg-gradient-to-l from-indigo-500">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-<!--                <img src="--><?//= PATH . 'assets/img/logo.png' ?><!--" alt="" class="h-10">-->
-
-                <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                    <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                        <img class="w-8 h-8 rounded-full border border-black" src="<?= PATH . 'assets/img/' . $user->image ?>" alt="user photo">
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 absolute shadow-xl border border-gray-600" style="top: 50px; right: 9%; display: none;" id="user-dropdown">
-                        <div class="px-4 py-3">
-                            <span class="block text-sm text-gray-900 dark:text-white"><?= $user->username ?></span>
-                            <span class="block text-sm  text-gray-500 truncate dark:text-gray-400"><?= $user->email ?></span>
-                        </div>
-                        <ul class="py-2" aria-labelledby="user-menu-button">
-                            <li>
-                                <a href="index.php?page=dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="index.php?page=product" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Products</a>
-                            </li>
-                            <li>
-                                <a href="index.php?page=user" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Users</a>
-                            </li>
-                            <li>
-                                <form method="post" action="index.php?page=login" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><button name="logout_btn">Log Out</button></form>
-                            </li>
-                        </ul>
+        <nav id="NAV" class="m-auto bg-gray-800">
+            <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+                <div class="relative flex h-16 items-center justify-between">
+                    <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                        <!-- Mobile menu button-->
+                        <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                            <span class="absolute -inset-0.5"></span>
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
                     </div>
-                    <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-                        </svg>
-                    </button>
+                    <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                        <div class="flex flex-shrink-0  items-center">
+                            <a href="index.php"><img class="h-12 w-auto hover:opacity-70" src="<?= PATH . 'assets/img/wiki-Logo.png' ?>" alt="Your Company"></a>
+                        </div>
+                        <div class="hidden sm:ml-6 sm:block">
+                            <div class="flex space-x-4">
+                                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                                <a href="index.html" class="bg-gray-900 hover:bg-gray-800 m-2 text-white rounded-md px-3 py-2 text-sm" aria-current="page">Home</a>
+                                <a href="" class="text-gray-300 m-2 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php if (!isset($_SESSION['user_id'])) { ?>
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                        <div class="inline-flex items-center ml-5 space-x-6 lg:justify-end">
+                            <a href="index.php?page=register" class="text-white font-medium leading-6 text-fuchsia-50 whitespace-no-wrap transition duration-150 ease-in-out hover:text-gray-500">
+                                Register
+                            </a>
+                            <a href="index.php?page=login" class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-orange-700 border border-transparent rounded-md shadow-sm hover:bg-indigo-400 bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
+                                Login
+                            </a>
+                        </div>
+                    </div> <?php } ?>
+
+                    <?php if (isset($_SESSION['user_id'])) { ?>
+                        <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                            <img class="w-8 h-8 rounded-full border border-black" src="<?= PATH . 'assets/img/' . $user->image ?>" alt="user photo">
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 absolute shadow-xl border border-gray-600" style="top: 50px; right: 0; display: none;" id="user-dropdown">
+                            <div class="px-4 py-3">
+                                <span class="block text-sm text-gray-900 dark:text-white"><?= $user->username ?></span>
+                                <span class="block text-sm  text-gray-500 truncate dark:text-gray-400"><?= $user->email ?></span>
+                            </div>
+                            <ul class="py-2" aria-labelledby="user-menu-button">
+                                <li>
+                                    <a href="index.php?page=wikis" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My Wikis</a>
+                                </li>
+                                <li>
+                                    <form method="post" action="index.php?page=login" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                        <button name="logout_btn">Log Out</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    <?php }?>
+
                 </div>
             </div>
         </nav>
-    <?php } ?>
 <!-- end navbar -->
 
 <!-- main start -->
@@ -80,11 +104,6 @@
 
         });
     });
-
-    function openNForm() {
-        let form = document.querySelector('#notification_form');
-        form.style.display = form.style.display === 'none' ? 'block' : 'none';
-    }
 </script>
     <script src="<?= PATH ?>assets/js/main.js"></script>
     <script src="<?= PATH ?>assets/js/DOM.js"></script>
