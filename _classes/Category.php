@@ -20,4 +20,12 @@ class Category
             $this->name = $user['name'];
         }
     }
+
+
+    static function getAll(): array
+    {
+        global $db;
+        $result = $db->query("select * from categories");
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
