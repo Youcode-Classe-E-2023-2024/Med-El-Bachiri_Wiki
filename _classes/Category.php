@@ -28,4 +28,15 @@ class Category
         $result = $db->query("select * from categories");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    function edit(): bool
+    {
+        global $db;
+        $query = "UPDATE categories SET name = :name WHERE id = :id";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $stm->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+        return $stm->execute();
+    }
 }
