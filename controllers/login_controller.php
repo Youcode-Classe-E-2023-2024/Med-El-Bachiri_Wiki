@@ -16,7 +16,8 @@ if(isset($_POST['login_btn'])){
     }
     if ($user !== false){
         header('location: index.php?page=home');
-        $_SESSION['user_id'] = $user;
+        $_SESSION['user_id'] = $user['user_id'];
+        $_SESSION['role'] = $user['role'];
     } else {
         header('location: index.php?page=login');
     }
