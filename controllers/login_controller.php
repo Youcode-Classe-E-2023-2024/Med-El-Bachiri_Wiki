@@ -14,7 +14,7 @@ if(isset($_POST['login_btn'])){
     } catch (Exception $e) {
         die($e->getMessage());
     }
-    if (isset($user) && $user !== false){
+    if ($user !== false){
         header('location: index.php?page=home');
         $_SESSION['user_id'] = $user;
     } else {
