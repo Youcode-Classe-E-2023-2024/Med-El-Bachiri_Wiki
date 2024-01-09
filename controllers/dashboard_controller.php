@@ -25,4 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         exit();
     }
+
+    if (isset($data['type']) && !empty($data['type']) && $data['type'] === 'editCat' && isset($data['name'])) {
+        $cat = new Category($data['id']);
+        $cat->name = $data['name'];
+        $result = $cat->edit();
+        exit($result);
+    }
+}
 }
