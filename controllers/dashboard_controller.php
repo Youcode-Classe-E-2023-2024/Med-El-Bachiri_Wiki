@@ -4,6 +4,10 @@ if(isset($_SESSION['user_id'])){
         header('location: index.php?page=home');
     }
 }
+// redirect to login if not logged in
+if (!isset($_SESSION['user_id'])) {
+    header('location: index.php?page=login');
+}
 
 // handle ajax requests here
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
