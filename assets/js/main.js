@@ -58,3 +58,6 @@ function getAllCat() {
         })
         .catch(error => console.log(error));
 }
+
+getAllCat();
+//
