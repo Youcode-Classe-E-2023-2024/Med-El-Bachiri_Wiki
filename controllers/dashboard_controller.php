@@ -1,3 +1,10 @@
+<?php
+if(isset($_SESSION['user_id'])){
+    if ($_SESSION['role'] !== 'admin') {
+        header('location: index.php?page=home');
+    }
+}
+
 // handle ajax requests here
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
