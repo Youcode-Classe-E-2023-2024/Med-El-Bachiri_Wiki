@@ -104,3 +104,22 @@ function editCat(catId) {
         .catch(error => console.log(error));
 }
 //
+
+// delete category
+
+function deleteCat(id) {
+    fetch('index.php?page=dashboard', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({type: 'deleteCat', id: id}),
+    })
+        .then(response => {
+            console.log(response.status);
+            return response.json();
+        })
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+    getAllCat();
+}
