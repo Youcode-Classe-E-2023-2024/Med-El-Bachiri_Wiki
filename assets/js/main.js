@@ -81,3 +81,26 @@ function editCatAlert(id) {
 
 }
 //
+
+// edit category
+function editCat(catId) {
+    const catName = document.querySelector('#catName-' + catId);
+    const dataToSend = {type: 'editCat', name: catName.value, id: catId};
+    fetch('index.php?page=dashboard', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSend),
+    })
+        .then(response => {
+            console.log(response.status);
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            document.querySelector('#editCatForm').style.display = 'none';
+        })
+        .catch(error => console.log(error));
+}
+//
