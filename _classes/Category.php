@@ -50,4 +50,14 @@ class Category
         return $stm->execute();
     }
 
+
+    static function add($name): bool
+    {
+        global $db;
+        $query = "INSERT INTO categories (name) VALUES (:name)";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':name', $name, PDO::PARAM_STR);
+
+        return $stm->execute();
+    }
 }
