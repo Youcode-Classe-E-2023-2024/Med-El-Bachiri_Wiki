@@ -24,6 +24,7 @@ class User
             $this->email = $user['email'];
             $this->username = $user['username'];
             $this->image = $user['image'];
+            $this->role = $user['role'];
             $this->password = $user['password'];
         }
     }
