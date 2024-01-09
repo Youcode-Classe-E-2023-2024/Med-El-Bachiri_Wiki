@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb8e029b-5de3-4ad2-9554-44d24c8a6afb" name="Changes" comment="" />
+    <list default="true" id="bb8e029b-5de3-4ad2-9554-44d24c8a6afb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_classes/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/_classes/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/_config/database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/dashboard_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/dashboard_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/home_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/home_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/login_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/login_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/_layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/_layout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/dashboard_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/dashboard_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/home_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/home_view.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,19 +34,27 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2afL1WKnzFTzyfhSmy4qeAPjqw7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -44,11 +63,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1704704475728</updated>
-      <workItem from="1704704477931" duration="3437000" />
+      <workItem from="1704704477931" duration="10343000" />
+      <workItem from="1704737501118" duration="13334000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
