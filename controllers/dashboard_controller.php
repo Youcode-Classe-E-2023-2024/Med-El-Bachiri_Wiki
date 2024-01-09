@@ -33,5 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit($result);
     }
 }
+
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+    $data = json_decode(file_get_contents('php://input'), true);
+    if (isset($data['type']) && !empty($data['type']) && $data['type'] === 'deleteCat') {
+        $result = Category::delete($data['id']);
+        exit($result);
+    }
 }
