@@ -39,4 +39,15 @@ class Category
 
         return $stm->execute();
     }
+
+    static function delete($id) : bool
+    {
+        global $db;
+        $query = "delete from categories WHERE id = :id";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':id', $id, PDO::PARAM_INT);
+
+        return $stm->execute();
+    }
+
 }
