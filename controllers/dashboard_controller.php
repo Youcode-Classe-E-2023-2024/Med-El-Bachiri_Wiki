@@ -63,4 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
         $result = Category::delete($data['id']);
         exit($result);
     }
+
+    if (isset($data['type']) && !empty($data['type']) && $data['type'] === 'deleteTag') {
+        $result = Tag::delete($data['id']);
+        exit($result);
+    }
 }
