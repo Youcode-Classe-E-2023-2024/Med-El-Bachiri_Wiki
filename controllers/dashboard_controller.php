@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
+
     if (isset($data['type']) && !empty($data['type']) && $data['type'] === 'editCat' && isset($data['name'])) {
         $cat = new Category($data['id']);
         $cat->name = $data['name'];
@@ -43,6 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($result) {
             exit(true);
         }
+    }
+
+
+    if (isset($data['type']) && !empty($data['type']) && $data['type'] === 'getTags') {
+        $result = Tag::getAll();
+        if ($result) {
+            exit(json_encode($result));
+        }
+        exit();
     }
 
 }
