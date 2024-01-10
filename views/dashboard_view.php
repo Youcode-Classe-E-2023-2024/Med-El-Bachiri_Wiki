@@ -148,6 +148,33 @@
             </tbody>
         </table>
     </div>
+</div>
+
+<div class="divs">
+    <div class="py-6 px-8 bg-gray-600 rounded-md shadow-md absolute" style="top: 33%; right: 5%;">
+        <h1 class="text-white text-2xl font-bold mb-4">Add Tag</h1>
+        <div class="mb-4">
+            <label for="tagName" class="text-white">Tag Name:</label>
+            <input id="tagName" type="text" class="block w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500">
+        </div>
+        <button onclick="addTag()" type="submit" class="border border-white bg-purple-800 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
+            Add
+        </button>
+    </div>
+    <div style="top: 30%; left: 43%;" class="overflow-auto max-h-96 absolute rounded-lg border border-gray-200 shadow-md m-5 w-96">
+        <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+            <thead class="bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-4 font-medium text-gray-900">Tag Name</th>
+            </tr>
+            </thead>
+            <tbody id="tagsGoHere" class="divide-y divide-gray-100 border-t border-gray-100">
+            <!-- display tags here -->
+
+            </tbody>
+        </table>
+    </div>
+</div>
 <div class="divs">
     wikis
 </div>
