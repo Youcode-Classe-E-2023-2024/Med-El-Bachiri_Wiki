@@ -36,6 +36,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $cat->edit();
         exit($result);
     }
+
+
+    if (isset($data['type']) && !empty($data['type']) && $data['type'] === 'addTag' && isset($data['tagName'])) {
+        $result = Tag::add($data['tagName']);
+        if ($result) {
+            exit(true);
+        }
+    }
+
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
