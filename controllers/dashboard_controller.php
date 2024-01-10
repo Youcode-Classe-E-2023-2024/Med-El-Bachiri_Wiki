@@ -55,6 +55,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
+    if (isset($data['type']) && !empty($data['type']) && $data['type'] === 'editTag' && isset($data['name'])) {
+        $tag = new Tag($data['id']);
+        $tag->name = $data['name'];
+        $result = $tag->edit();
+        exit($result);
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
