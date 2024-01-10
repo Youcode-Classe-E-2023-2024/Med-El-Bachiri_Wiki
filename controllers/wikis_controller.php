@@ -15,4 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         exit();
     }
+
+    if (isset($data['type']) && $data['type'] === 'addWiki') {
+        $result = Wiki::add($data['title'], $data['content'], $_SESSION['user_id'], $data['id_category']);
+        if ($result !== false) {
+            exit(true);
+        }
+        exit();
+    }
 }
