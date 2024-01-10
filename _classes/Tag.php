@@ -25,7 +25,7 @@ class Tag
     static function getAll(): array
     {
         global $db;
-        $result = $db->query("select * from categories");
+        $result = $db->query("select * from tags");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
