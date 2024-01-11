@@ -100,7 +100,8 @@ function getAllCatAdmin() {
         .catch(error => console.log(error));
 }
 
-getAllCat();
+getAllCatAdmin();
+//
 //
 
 // edit category pop up / alert
