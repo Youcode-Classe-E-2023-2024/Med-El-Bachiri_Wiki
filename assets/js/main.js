@@ -31,9 +31,11 @@ function addCat() {
 }
 //
 
-// get all categories
-function getAllCat() {
-    catGoHere.innerHTML = '';
+// get all categories for admin
+function getAllCatAdmin() {
+    if (catGoHere !== null) {
+        catGoHere.innerHTML = '';
+    }
     fetch('index.php?page=dashboard', {
         method: 'POST',
         headers: {
