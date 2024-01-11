@@ -141,8 +141,7 @@ function editCatAlert(id) {
                         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
                         <input id="catName-${id}" type="text" value="${currentCatName.innerHTML}" name="" class="w-full border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500">
                     </div>
-                
-                    <button onclick="editCat(${id})" type="submit" class="bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 focus:outline-none focus:shadow-outline-blue active:bg-yellow-800">
+                    <button onclick="editCat(${id})" type="submit" class="bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:shadow-outline-blue active:bg-yellow-800">
                         Save
                     </button>
                 </div>`;
