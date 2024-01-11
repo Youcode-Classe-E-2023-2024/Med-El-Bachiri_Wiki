@@ -68,9 +68,6 @@
                             </div>
                             <ul class="py-2" aria-labelledby="user-menu-button">
                                 <li>
-                                    <a href="index.php?page=wikis" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My Wikis</a>
-                                </li>
-                                <li>
                                     <form method="post" action="index.php?page=login" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                         <button name="logout_btn">Log Out</button>
                                     </form>
@@ -111,5 +108,6 @@
 </script>
     <script src="<?= PATH ?>assets/js/main.js"></script>
     <script src="<?= PATH ?>assets/js/DOM.js"></script>
+    <script src="<?= PATH ?>assets/js/authentication.js"></script>
 </body>
 </html>
