@@ -19,14 +19,14 @@ function addCat() {
             .then(data => {
                 if (data) {
                     catName.value = '';
-                    alert('Product Added success');
-                    getAllCat();
+                    alert('CATEGORY ADDED !');
+                    getAllCatAdmin();
                 }
 
             })
             .catch(error => console.log(error));
     } else {
-        alert('must fill both inputs');
+        alert('MUST FILL THE INPUT');
     }
 }
 //
