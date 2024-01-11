@@ -5,8 +5,8 @@ include_once '_functions/functions.php';
 include_once '_config/db.php';
 
 
-spl_autoload_register(function ($class) {
-    include_once '_classes/' . $class . '.php';
+spl_autoload_register(function ($model) {
+    include_once 'models/' . $model . '.php';
 });
 
 if (isset($_GET['page']) && !empty($_GET['page'])) {
