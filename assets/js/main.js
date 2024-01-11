@@ -170,8 +170,10 @@ function editCat(catId) {
             return response.json();
         })
         .then(data => {
-            console.log(data);
-            document.querySelector('#editCatForm').style.display = 'none';
+            closeEditForm();
+        })
+        .then(()=>{
+            getAllCatAdmin();
         })
         .catch(error => console.log(error));
 }
