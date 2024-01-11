@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb8e029b-5de3-4ad2-9554-44d24c8a6afb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/home_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/home_controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/register_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/register_controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/wikis_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/wikis_controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/login_controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/login_controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/_layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/_layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/dashboard_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/dashboard_view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/login_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/login_view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/register_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/register_view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,20 +44,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/Med-El-Bachiri_Wiki/assets/js",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Med-El-Bachiri_Wiki\assets\js" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -76,7 +76,8 @@
       <workItem from="1704737501118" duration="13334000" />
       <workItem from="1704787724606" duration="34619000" />
       <workItem from="1704874609117" duration="12540000" />
-      <workItem from="1704900325178" duration="10456000" />
+      <workItem from="1704900325178" duration="11333000" />
+      <workItem from="1704974835326" duration="5545000" />
     </task>
     <servers />
   </component>
