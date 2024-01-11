@@ -1,9 +1,9 @@
 <?php
-if(isset($_SESSION['user_id'])){
-    if ($_SESSION['role'] !== 'admin') {
-        header('location: index.php?page=home');
-    }
+$currentUser = new User($_SESSION['user_id']);
+if($currentUser->role !== 'admin'){
+    header('location: index.php?page=home');
 }
+
 // redirect to login if not logged in
 if (!isset($_SESSION['user_id'])) {
     header('location: index.php?page=login');
