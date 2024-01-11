@@ -18,10 +18,10 @@ class Validation
      */
     static function userChecker($email)
     {
-        if (User::checkIfUserExist($email)) {
+        if (User::checkIfUserExist($email) !== false) {
             return "User already exists";
-        }
-        return true;
+        } else
+            return false;
     }
 
 
