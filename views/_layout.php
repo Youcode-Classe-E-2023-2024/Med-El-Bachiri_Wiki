@@ -108,6 +108,7 @@
 </script>
     <script src="<?= PATH ?>assets/js/main.js"></script>
     <script src="<?= PATH ?>assets/js/DOM.js"></script>
-    <script src="<?= PATH ?>assets/js/authentication.js"></script>
+    <script src="<?= PATH ?>assets/js/register.js"></script>
+    <script src="<?= PATH ?>assets/js/login.js"></script>
 </body>
 </html>
