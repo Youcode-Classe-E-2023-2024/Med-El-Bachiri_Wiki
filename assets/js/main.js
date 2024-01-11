@@ -102,6 +102,32 @@ function getAllCatAdmin() {
 
 getAllCatAdmin();
 //
+
+// get all categories for author
+function getAllCatAuthor() {
+    const categoriesGoHere = document.querySelector('.categoriesGoHere');
+
+    categoriesGoHere.innerHTML = '';
+    fetch('index.php?page=wikis', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({type: 'getCat'})
+    })
+        .then(response => {
+            console.log(response.status);
+            return response.json();
+        })
+        .then(data => {
+            data.forEach(cat => {
+                categoriesGoHere.innerHTML += `<option value="${cat.id}">${cat.name}</option>`;
+            })
+        })
+        .catch(error => console.log(error));
+}
+
+getAllCatAuthor();
 //
 
 // edit category pop up / alert
