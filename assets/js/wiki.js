@@ -116,3 +116,73 @@ function editWikiAlert(id) {
     document.querySelector('#currentWikiID').value = id;
 }
 //
+
+// save wiki edit
+function saveWikiEdit() {
+    let title = document.querySelector('#wikiTitle');
+    let content = document.querySelector('#wikiContent');
+    const tagsEdit = document.querySelector('.selectedTags');
+    const wikiID = document.querySelector('#currentWikiID');
+
+    let selectedTagsEdit = [];
+    const tagOptions = tagsEdit.selectedOptions;
+    for (let i = 0; i < tagOptions.length; i++) {
+        selectedTagsEdit.push(tagOptions[i].value);
+    }
+
+    let idCategoryEdit = document.querySelector('#wiki_id_category');
+
+    if (title.value !== '' && content.value !== '' && idCategoryEdit.value !== '' && selectedTagsEdit.length !== 0) {
+        let sendData = {
+            type: 'editWiki',
+            wiki_id: wikiID.value,
+            title: title.value,
+            content: content.value,
+            id_category: idCategoryEdit.value,
+            tags: selectedTagsEdit
+        };
+
+        fetch('index.php?page=wikis', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(sendData),
+        })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                alert('WIKI EDITED!');
+                displayUserWikis();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    } else {
+        alert('MUST FILL ALL THE INPUTS');
+    }
+}
+
+// delete wiki
+function deleteWiki(id) {
+    fetch('index.php?page=wikis', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({type: 'deleteWiki', id: id}),
+    })
+        .then(response => {
+            console.log(response.status);
+            return response.json();
+        })
+        .then(data => {
+
+            if (data) {
+                alert('WIKI DELETED !');
+                displayUserWikis();
+            }
+        })
+        .catch(error => console.error(error));
+}
+//
