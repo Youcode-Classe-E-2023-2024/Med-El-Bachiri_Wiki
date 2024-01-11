@@ -195,5 +195,37 @@ function deleteCat(id) {
         })
         .then(data => console.log(data))
         .catch(error => console.error(error));
-    getAllCat();
+
+}
+
+// add tag
+
+function addTag() {
+    const tagName = document.querySelector('#tagName');
+
+    if (tagName.value !== '') {
+        fetch('index.php?page=dashboard', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ type: 'addTag', tagName: tagName.value }),
+        })
+            .then(response => {
+                console.log(response.status);
+                return response.json();
+            })
+            .then(data => {
+                if (data) {
+                    tagName.value = '';
+                    alert('TAG ADDED !');
+                    getAllTagsForAdmin();
+                }
+
+            })
+            .catch(error => console.log(error));
+    } else {
+        alert('MUST FILL THE INPUT');
+    }
+}
 }
