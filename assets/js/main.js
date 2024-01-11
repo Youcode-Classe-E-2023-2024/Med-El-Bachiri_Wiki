@@ -144,8 +144,8 @@ function editCatAlert(id) {
                     <button onclick="editCat(${id})" type="submit" class="bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:shadow-outline-blue active:bg-yellow-800">
                         Save
                     </button>
-                </div>`;
-
+                </div>
+`;
 }
 //
 
