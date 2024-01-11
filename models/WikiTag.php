@@ -25,4 +25,14 @@ class WikiTag
 
         return true;
     }
+
+    static function deleteWikiTags($id_wiki)
+    {
+        global $db;
+        // Delete existing tags for the wiki
+        $queryDeleteTags = "DELETE FROM wikis_tags WHERE id_wiki = :id_wiki";
+        $stmDeleteTags = $db->prepare($queryDeleteTags);
+        $stmDeleteTags->bindValue(':id_wiki', $id_wiki, PDO::PARAM_INT);
+        $stmDeleteTags->execute();
+    }
 }
