@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+//// Register section /////
+
     const registerForm = document.getElementById('registerForm');
 
     registerForm.addEventListener('submit', function (event) {
@@ -17,16 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Reset previous error messages
         document.getElementById('err_message').innerText = '';
-        usernameInput.classList.remove('border-red-500');
-        emailInput.classList.remove('border-red-500');
-        passwordInput.classList.remove('border-red-500');
 
         const errors = {};
 
         // Validate username
         if (usernameInput.value.trim() === '') {
             errors.username = 'Username is required.';
-            usernameInput.classList.add('border-red-500');
         } else if (!/^[a-zA-Z0-9]{3,}$/.test(usernameInput.value)) {
             errors.username = 'Invalid username. Username should be at least 3 characters long.';
         }
@@ -34,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Validate email format
         if (emailInput.value.trim() === '') {
             errors.email = 'Email is required.';
-            emailInput.classList.add('border-red-500');
         } else if (!emailRegex.test(emailInput.value)) {
             errors.email = 'Invalid email. Please use a valid Gmail address.';
         }
@@ -42,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Validate password
         if (passwordInput.value.trim() === '') {
             errors.password = 'Password is required.';
-            passwordInput.classList.add('border-red-500');
         } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(passwordInput.value)) {
             errors.password = 'Invalid password. Password should have at least 8 characters, including one uppercase letter, one lowercase letter, and one number.';
         }
@@ -85,12 +82,16 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                if ( data) {
+                if (data.success) {
                     window.location.href = 'index.php?page=login';
-                } else {
-                    document.getElementById('err_message').innerText = data;
-                    console.log(data.errors);
+                } else if (data.errors.userExist_err !== false) {
+                    document.getElementById('err_message').innerText += data.errors.userExist_err;
+                } else if (data.errors.password_err !== false) {
+                    document.getElementById('err_message').innerText += data.errors.password_err;
+                } else if (data.errors.email_err !== false) {
+                    document.getElementById('err_message').innerText += data.errors.email_err;
+                } else if (data.errors.username_err !== false) {
+                    document.getElementById('err_message').innerText += data.errors.username_err;
                 }
             })
             .catch(error => console.error('Error:', error));
