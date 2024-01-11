@@ -68,13 +68,23 @@ class User
             return false;
         }
 
+        // make the first user to register, role 'admin'
+        $role = 'author';
+        $userCountQuery = $db->query('SELECT COUNT(*) AS rowCount FROM users');
+        $userCountResult = $userCountQuery->fetch(PDO::FETCH_ASSOC);
+
+        if ($userCountResult['rowCount'] === 0) {
+            $role = 'admin';
+        }
+
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO users (username, email, password, image) VALUES (:username, :email, :password, :image)";
+        $query = "INSERT INTO users (username, email, password, image, role) VALUES (:username, :email, :password, :image, :role)";
         $stm = $db->prepare($query);
         $stm->bindValue(':username', $username, PDO::PARAM_STR);
         $stm->bindValue(':email', $email, PDO::PARAM_STR);
         $stm->bindValue(':password', $hashed_password, PDO::PARAM_STR);
         $stm->bindValue(':image', 'default_profile.png', PDO::PARAM_STR);
+        $stm->bindValue(':role', $role, PDO::PARAM_STR);
 
         try {
             $execution = $stm->execute();
