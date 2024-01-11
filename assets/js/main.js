@@ -305,4 +305,22 @@ function getAllTagsForAdmin() {
         .catch(error => console.log(error));
 }
 //
+
+// delete tag
+function deleteTag(id) {
+    fetch('index.php?page=dashboard', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({type: 'deleteTag', id: id}),
+    })
+        .then(response => {
+            console.log(response.status);
+            return response.json();
+        })
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+    getAllTagsForAdmin();
+}
 }
