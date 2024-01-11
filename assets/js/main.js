@@ -426,3 +426,35 @@ submitWiki.addEventListener('click', function (event) {
     }
 });
 //
+
+
+// get all tags for author
+function getAllTagsForAuthor() {
+    const tagsGoHereAuthor = document.querySelector('#tagsGoHereAuthor');
+    if (tagsGoHereAuthor !== null) {
+        tagsGoHereAuthor.innerHTML = '';
+    }
+    fetch('index.php?page=wikis', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ type: 'getTags' }),
+    })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            data.forEach(tag => {
+                tagsGoHereAuthor.innerHTML += `
+                <option value="${tag.id}" class="flex rounded-sm justify-center items-center border">
+                    ${tag.name}
+                </option>
+                `;
+            });
+        })
+        .catch(error => console.log(error));
+}
+
+getAllTagsForAuthor();
+//
