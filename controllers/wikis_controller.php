@@ -17,9 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (isset($data['type']) && $data['type'] === 'addWiki') {
-        $result = Wiki::add($data['title'], $data['content'], $_SESSION['user_id'], $data['id_category']);
-        if ($result !== false) {
+        $thisWikiId = Wiki::add($data['title'], $data['content'], $_SESSION['user_id'], $data['id_category']);
+        if ($thisWikiId !== false) {
+            foreach ($data['tags'] as $tag) {
+                ArticleTag::add($thisWikiId, $tag);
+            }
             exit(true);
+        } else {
+            exit(false);
+        }
+    }
+
+    if (isset($data['type']) && !empty($data['type']) && $data['type'] === 'getTags') {
+        $result = Tag::getAll();
+        if ($result) {
+            exit(json_encode($result));
         }
         exit();
     }
