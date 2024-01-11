@@ -35,6 +35,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         exit();
     }
+
+
+    if (isset($data['type']) && !empty($data['type']) && $data['type'] === 'getMyWikis') {
+        try {
+            $result = Wiki::getMine($_SESSION['user_id']);
+            if ($result) {
+                exit(json_encode($result));
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+        exit();
+    }
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     $data = json_decode(file_get_contents('php://input'), true);
     if (isset($data['type']) && !empty($data['type']) && $data['type'] === 'deleteWiki') {
