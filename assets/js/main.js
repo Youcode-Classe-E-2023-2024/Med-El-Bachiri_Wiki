@@ -135,8 +135,15 @@ function editCatAlert(id) {
     let currentCatName = document.querySelector('#currentCatName-' + id);
 
     window.document.body.innerHTML += `
-                <div id="editCatForm" style="left: 50%;" class="shadow-xl fixed top-36 max-w-md mx-auto bg-white rounded p-8 shadow-md">
-                    <h2 class="text-2xl font-bold mb-6">Edit Item</h2>
+                <div id="editCatForm" style="left: 30%; top: 33%;" class="fixed top-1/4 left-1/2 transform -translate-x-1/2 bg-white shadow-xl rounded p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold">Edit Item</h2>
+                        <button onclick="closeEditForm()" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
                     <div class="mb-4">
                         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
                         <input id="catName-${id}" type="text" value="${currentCatName.innerHTML}" name="" class="w-full border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500">
