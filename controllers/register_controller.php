@@ -1,8 +1,8 @@
 <?php
 
-// redirect to dashboard if logged in
+// redirect to home if logged in
 if (isset($_SESSION['user_id'])) {
-    header('location: index.php?page=dashboard');
+    header('location: index.php?page=home');
 }
 
 
