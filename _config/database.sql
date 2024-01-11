@@ -1,73 +1,57 @@
 -- ************************************** `users`
 CREATE DATABASE IF NOT EXISTS wiki;
-use wiki;
+USE wiki;
+
 -- ************************************** `users`
-create table wiki.users
+CREATE TABLE users
 (
-    user_id  int auto_increment
-        primary key,
-    username varchar(255)                              not null,
-    email    varchar(255)                              not null,
-    password text                                      not null,
-    image    text                                      not null,
-    role     enum ('admin', 'author') default 'author' not null,
-    constraint users_email_uindex
-        unique (email),
-    constraint users_user_id_uindex
-        unique (user_id)
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password TEXT NOT NULL,
+    image TEXT NOT NULL,
+    role ENUM ('admin', 'author') DEFAULT 'author' NOT NULL,
+    CONSTRAINT users_email_uindex UNIQUE (email),
+    CONSTRAINT users_user_id_uindex UNIQUE (user_id)
 );
 
 -- ************************************** `categories`
-
-CREATE TABLE `categories`
+CREATE TABLE categories
 (
-    `id`   int NOT NULL auto_increment unique,
-    `name` varchar(255) NOT NULL ,
-    `create_at`   timestamp(0) NOT NULL DEFAULT NOW(),
-    `edit_at`     timestamp(0) NULL ,
-
-    PRIMARY KEY (`id`)
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    create_at TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    edit_at TIMESTAMP(0) NULL
 );
 
 -- ************************************** `tags`
-
-CREATE TABLE `tags`
+CREATE TABLE tags
 (
-    `id`   int NOT NULL auto_increment unique,
-    `name` varchar(255) NOT NULL ,
-
-    PRIMARY KEY (`id`)
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
 );
 
--- ************************************** `articles`
-
-CREATE TABLE `articles`
+-- ************************************** `wikis`
+CREATE TABLE wikis
 (
-    `id`          int NOT NULL auto_increment unique,
-    `title`       varchar(255) NOT NULL ,
-    `content`     text NOT NULL ,
-    `create_at`   timestamp(0) NOT NULL DEFAULT NOW(),
-    `edit_at`     timestamp(0) NULL ,
-    `status`      enum('published', 'archived') NOT NULL ,
-    `id_user`     int NOT NULL ,
-    `id_category` int NOT NULL ,
-
-    PRIMARY KEY (`id`),
-    KEY `FK_1` (`id_user`),
-    CONSTRAINT `FK_1` FOREIGN KEY `FK_1` (`id_user`) REFERENCES `users` (`user_id`),
-    KEY `FK_2` (`id_category`),
-    CONSTRAINT `FK_2` FOREIGN KEY `FK_2` (`id_category`) REFERENCES `categories` (`id`)
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    create_at TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    edit_at TIMESTAMP(0) NULL,
+    status ENUM('published', 'archived') NOT NULL,
+    id_user INT NOT NULL,
+    id_category INT NOT NULL,
+    CONSTRAINT FK_1 FOREIGN KEY (id_user) REFERENCES users (user_id) ON DELETE CASCADE,
+    CONSTRAINT FK_2 FOREIGN KEY (id_category) REFERENCES categories (id) ON DELETE CASCADE
 );
 
--- ************************************** `articles_tags`
-
-CREATE TABLE `articles_tags`
+-- ************************************** `wikis_tags`
+CREATE TABLE wikis_tags
 (
-    `id_article` int NOT NULL ,
-    `id_tag`     int NOT NULL ,
-
-    KEY `FK_1` (`id_article`),
-    CONSTRAINT `FK_3` FOREIGN KEY `FK_1` (`id_article`) REFERENCES `articles` (`id`),
-    KEY `FK_2` (`id_tag`),
-    CONSTRAINT `FK_4` FOREIGN KEY `FK_2` (`id_tag`) REFERENCES `tags` (`id`)
+    id_wiki INT NOT NULL,
+    id_tag INT NOT NULL,
+    CONSTRAINT FK_3 FOREIGN KEY (id_wiki) REFERENCES wikis (id) ON DELETE CASCADE,
+    CONSTRAINT FK_4 FOREIGN KEY (id_tag) REFERENCES tags (id) ON DELETE CASCADE,
+    PRIMARY KEY (id_wiki, id_tag)
 );
