@@ -14,7 +14,7 @@ class Wiki
     {
         global $db;
 
-        $query = "SELECT * FROM articles WHERE id = :id";
+        $query = "SELECT * FROM wikis WHERE id = :id";
         $stm = $db->prepare($query);
         $stm->bindValue(':id', $id, PDO::PARAM_INT);
         $stm->execute();
@@ -34,7 +34,7 @@ class Wiki
     static function getAll(): array
     {
         global $db;
-        $result = $db->query("select * from articles");
+        $result = $db->query("select * from wikis");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -83,7 +83,7 @@ class Wiki
     static function delete($id): bool
     {
         global $db;
-        $query = "delete from articles WHERE id = :id";
+        $query = "delete from wikis WHERE id = :id";
         $stm = $db->prepare($query);
         $stm->bindValue(':id', $id, PDO::PARAM_INT);
 
@@ -94,7 +94,7 @@ class Wiki
     static function add($title, $content, $id_user, $id_category)
     {
         global $db;
-        $query = "INSERT INTO articles (title, content, create_at, status, id_user, id_category) VALUES (:title, :content, now(), 'published', :id_user, :id_category)";
+        $query = "INSERT INTO wikis (title, content, create_at, status, id_user, id_category) VALUES (:title, :content, now(), 'published', :id_user, :id_category)";
         $stm = $db->prepare($query);
         $stm->bindValue(':title', $title, PDO::PARAM_STR);
         $stm->bindValue(':content', $content, PDO::PARAM_STR);
