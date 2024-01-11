@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $thisWikiId = Wiki::add($data['title'], $data['content'], $_SESSION['user_id'], $data['id_category']);
         if ($thisWikiId !== false) {
             foreach ($data['tags'] as $tag) {
-                ArticleTag::add($thisWikiId, $tag);
+                WikiTag::add($thisWikiId, $tag);
             }
             exit(true);
         } else {
