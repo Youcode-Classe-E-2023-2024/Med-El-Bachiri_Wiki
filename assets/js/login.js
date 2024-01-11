@@ -60,6 +60,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         fetch('index.php?page=login', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify(dataToSend),
         })
             .then(response => response.json())
