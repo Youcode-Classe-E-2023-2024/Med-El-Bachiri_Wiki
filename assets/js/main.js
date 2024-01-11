@@ -356,4 +356,25 @@ function closeTagEditForm() {
     document.querySelector('#editTagForm').remove();
 }
 
+// edit tag
+function editTag(tagId) {
+    const tagName = document.querySelector('#tagName-' + tagId);
+    const dataToSend = {type: 'editTag', name: tagName.value, id: tagId};
+    fetch('index.php?page=dashboard', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSend),
+    })
+        .then(response => {
+            console.log(response.status);
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            closeTagEditForm();
+            getAllTagsForAdmin();
+        })
+        .catch(error => console.log(error));
 }
