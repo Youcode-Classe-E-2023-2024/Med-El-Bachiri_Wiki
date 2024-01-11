@@ -78,6 +78,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         fetch('index.php?page=register', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify(dataToSend),
         })
             .then(response => response.json())
