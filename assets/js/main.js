@@ -149,6 +149,11 @@ function editCatAlert(id) {
 }
 //
 
+// closeEditForm function
+function closeEditForm() {
+    document.querySelector('#editCatForm').remove();
+}
+
 // edit category
 function editCat(catId) {
     const catName = document.querySelector('#catName-' + catId);
