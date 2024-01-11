@@ -350,4 +350,10 @@ function editTagAlert(id) {
 `;
 }
 //
+
+// closeTagEditForm function
+function closeTagEditForm() {
+    document.querySelector('#editTagForm').remove();
+}
+
 }
