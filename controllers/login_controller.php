@@ -32,6 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // log out
-if (isset($_SESSION['user_id']) && isset($_POST['logout_btn'])) {
-    session_destroy();
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    if (isset($_GET['request']) && $_GET['request'] === 'logout') {
+        session_destroy();
+    }
 }
