@@ -99,3 +99,20 @@ function displayUserWikis() {
 
 displayUserWikis();
 //
+
+// edit wiki alert
+function editWikiAlert(id) {
+    addWikiShowFrom();
+    document.querySelector('#editWikiSubmit').style.display = 'block';
+    document.querySelector('#submitWiki').style.display = 'none';
+    let wikiTitleEdit = document.querySelector('#wikiTitle');
+    let wikiContentEdit = document.querySelector('#wikiContent');
+
+    let titleWiki = document.querySelector('#titleWiki-' + id);
+    let contentWiki = document.querySelector('#contentWiki-' + id);
+
+    wikiTitleEdit.value = titleWiki.value;
+    wikiContentEdit.value = contentWiki.value;
+    document.querySelector('#currentWikiID').value = id;
+}
+//
