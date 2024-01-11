@@ -35,4 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         exit();
     }
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+    $data = json_decode(file_get_contents('php://input'), true);
+    if (isset($data['type']) && !empty($data['type']) && $data['type'] === 'deleteWiki') {
+        $result = Wiki::delete($data['id']);
+        exit($result);
+    }
 }
