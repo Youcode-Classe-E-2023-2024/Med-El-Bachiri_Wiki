@@ -122,7 +122,7 @@ class User
             if (password_verify($password, $user['password'])) {
                 return $user;
             } else {
-                return false;
+                return "passError";
             }
         } else {
             return false;
