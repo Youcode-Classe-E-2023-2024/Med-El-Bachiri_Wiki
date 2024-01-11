@@ -110,5 +110,7 @@
     <script src="<?= PATH ?>assets/js/DOM.js"></script>
     <script src="<?= PATH ?>assets/js/register.js"></script>
     <script src="<?= PATH ?>assets/js/login.js"></script>
+    <script src="<?= PATH ?>assets/js/logout.js"></script>
+    <script src="<?= PATH ?>assets/js/wiki.js"></script>
 </body>
 </html>
