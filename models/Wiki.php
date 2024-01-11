@@ -41,18 +41,29 @@ class Wiki
     /**
      * @throws Exception
      */
-    static function getMine($id)
+    static function getMine($id_user)
     {
         global $db;
-        $query = "select * from articles where id = :id";
+
+                                // GROUP_CONCAT = croups tags names into one column (tag_names) as string with ', '
+        $query = "SELECT wikis.*, GROUP_CONCAT(tags.name) AS tag_names, categories.name AS category_name
+        FROM wikis
+        LEFT JOIN wikis_tags ON wikis.id = wikis_tags.id_wiki
+        LEFT JOIN tags ON wikis_tags.id_tag = tags.id
+        LEFT JOIN categories ON wikis.id_category = categories.id
+        WHERE wikis.id_user = :id_user
+          AND wikis.status = 'published'
+        GROUP BY wikis.id
+
+        ";
         $stm = $db->prepare($query);
-        $stm->bindValue(':id', $id, PDO::PARAM_STR);
+        $stm->bindValue(':id_user', $id_user, PDO::PARAM_STR);
         $execution = $stm->execute();
 
         if (!$execution) {
             throw new Exception($stm->errorInfo());
         } else {
-            $result = $stm->fetch(PDO::FETCH_ASSOC);
+            $result = $stm->fetchAll(PDO::FETCH_ASSOC);
             if ($result !== false) {
                 return $result;
             } else {
