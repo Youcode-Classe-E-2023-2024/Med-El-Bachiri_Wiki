@@ -72,16 +72,16 @@ class Wiki
         }
     }
 
-    function edit(): bool
+    static function update($title, $content, $id_category, $wiki_id, $id_user): bool
     {
         global $db;
-        $query = "UPDATE articles SET title = :title, content = :content, status = :status, id_category = :id_category, edit_at = now()  WHERE id = :id";
+        $query = "UPDATE wikis SET title = :title, content = :content, id_category = :id_category, edit_at = now(), id_user = :id_user  WHERE id = :wiki_id";
         $stm = $db->prepare($query);
-        $stm->bindValue(':title', $this->title, PDO::PARAM_STR);
-        $stm->bindValue(':content', $this->content, PDO::PARAM_STR);
-        $stm->bindValue(':status', $this->status, PDO::PARAM_STR);
-        $stm->bindValue(':id_category', $this->id_category, PDO::PARAM_INT);
-        $stm->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $stm->bindValue(':title', $title, PDO::PARAM_STR);
+        $stm->bindValue(':content', $content, PDO::PARAM_STR);
+        $stm->bindValue(':id_category', $id_category, PDO::PARAM_INT);
+        $stm->bindValue(':id_user', $id_user, PDO::PARAM_INT);
+        $stm->bindValue(':wiki_id', $wiki_id, PDO::PARAM_INT);
 
         return $stm->execute();
     }
