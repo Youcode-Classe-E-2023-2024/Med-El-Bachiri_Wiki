@@ -151,7 +151,6 @@ function saveWikiEdit() {
         })
             .then(response => response.text())
             .then(data => {
-                console.log(data);
                 alert('WIKI EDITED!');
                 displayUserWikis();
             })
