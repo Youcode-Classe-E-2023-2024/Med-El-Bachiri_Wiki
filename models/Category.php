@@ -60,4 +60,15 @@ class Category
 
         return $stm->execute();
     }
+
+    static function lasCategories()
+    {
+        global $db;
+        $result = $db->query("SELECT *
+        FROM categories
+        ORDER BY create_at DESC
+        LIMIT 5;
+        ");
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
