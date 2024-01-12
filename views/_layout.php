@@ -35,6 +35,7 @@
                             <div class="flex space-x-4">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                                 <a href="index.php?page=home" class="bg-gray-900 hover:bg-gray-800 m-2 text-white rounded-md px-3 py-2 text-sm" aria-current="page">Home</a>
+                                <a href="index.php?page=all-wikis" class="bg-gray-900 hover:bg-gray-800 m-2 text-white rounded-md px-3 py-2 text-sm" aria-current="page">See All Wikis</a>
                                 <?php if (isset($user->role) && $user->role === 'admin') { ?>
                                 <a href="index.php?page=dashboard" class="text-gray-300 m-2 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
                                 <?php } elseif (isset($user->role) && $user->role === 'author') { ?>
