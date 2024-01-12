@@ -131,4 +131,35 @@ class Wiki
         ");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    /**
+     * @throws Exception
+     */
+    static function getWiki($wiki_id)
+    {
+        global $db;
+        $query = "
+        SELECT wikis.*, GROUP_CONCAT(tags.name) AS tag_names, categories.name AS category_name, users.*
+        FROM wikis
+                 LEFT JOIN wikis_tags ON wikis.id = wikis_tags.id_wiki
+                 LEFT JOIN tags ON wikis_tags.id_tag = tags.id
+                 LEFT JOIN categories ON wikis.id_category = categories.id
+                 LEFT JOIN users on wikis.id_user = users.user_id
+        WHERE wikis.id = :wiki_id AND wikis.status = 'published' "
+        ;
+        $stm = $db->prepare($query);
+        $stm->bindValue(':wiki_id', $wiki_id, PDO::PARAM_INT);
+
+        $execution = $stm->execute();
+        if (!$execution) {
+            throw new Exception($stm->errorInfo());
+        } else {
+            $result = $stm->fetch(PDO::FETCH_ASSOC);
+            if ($result !== false) {
+                return $result;
+            } else {
+                return false;
+            }
+        }
+    }
 }
