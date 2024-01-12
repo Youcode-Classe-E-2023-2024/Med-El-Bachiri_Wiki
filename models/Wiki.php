@@ -119,4 +119,16 @@ class Wiki
             return false;
         }
     }
+
+    static function lastWikis(): array
+    {
+        global $db;
+        $result = $db->query("SELECT *
+        FROM wikis
+        WHERE status = 'published'
+        ORDER BY COALESCE(edit_at, create_at) DESC
+        LIMIT 3;
+        ");
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
