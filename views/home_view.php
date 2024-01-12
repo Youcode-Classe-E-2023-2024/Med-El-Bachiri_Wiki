@@ -47,7 +47,7 @@
         <!-- recent posts -->
         <div class="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
             <h2 class="font-bold text-3xl">Latest Wikis</h2>
-            <a class="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
+            <a href="index.php?page=all-wikis" class="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
                 View all
             </a>
         </div>
