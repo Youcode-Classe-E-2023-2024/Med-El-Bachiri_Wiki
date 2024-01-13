@@ -151,5 +151,7 @@
     <script src="<?= PATH ?>assets/js/login.js"></script>
     <script src="<?= PATH ?>assets/js/logout.js"></script>
     <script src="<?= PATH ?>assets/js/wiki.js"></script>
+    <script src="<?= PATH ?>/assets/js/search.js"></script>
+
 </body>
 </html>
