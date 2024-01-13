@@ -34,7 +34,15 @@ class Wiki
     static function getAll(): array
     {
         global $db;
-        $result = $db->query("select * from wikis");
+        $result = $db->query("
+        SELECT wikis.*, GROUP_CONCAT(tags.name separator '#') AS tag_names, categories.name AS category_name
+        FROM wikis
+        LEFT JOIN wikis_tags ON wikis.id = wikis_tags.id_wiki
+        LEFT JOIN tags ON wikis_tags.id_tag = tags.id
+        LEFT JOIN categories ON wikis.id_category = categories.id
+        WHERE wikis.status = 'published'
+        GROUP BY wikis.id
+        ");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
