@@ -54,7 +54,7 @@ class Wiki
         global $db;
 
                                 // GROUP_CONCAT = croups tags names into one column (tag_names) as string with ', '
-        $query = "SELECT wikis.*, GROUP_CONCAT(tags.name) AS tag_names, categories.name AS category_name
+        $query = "SELECT wikis.*, GROUP_CONCAT(tags.name separator ', ') AS tag_names, categories.name AS category_name
         FROM wikis
         LEFT JOIN wikis_tags ON wikis.id = wikis_tags.id_wiki
         LEFT JOIN tags ON wikis_tags.id_tag = tags.id
@@ -147,7 +147,7 @@ class Wiki
     {
         global $db;
         $query = "
-        SELECT wikis.*, GROUP_CONCAT(tags.name) AS tag_names, categories.name AS category_name, users.*
+        SELECT wikis.*, GROUP_CONCAT(tags.name separator ', ') AS tag_names, categories.name AS category_name, users.*
         FROM wikis
                  LEFT JOIN wikis_tags ON wikis.id = wikis_tags.id_wiki
                  LEFT JOIN tags ON wikis_tags.id_tag = tags.id
