@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } elseif ($user === "passError") {
             echo json_encode(['success' => false, 'message' => 'Password incorrect']);
         } else {
-            echo json_encode(['success' => true]);
+            echo json_encode(['success' => true, 'role' => $user['role']]);
             $_SESSION['user_id'] = $user['user_id'];
         }
         exit;
