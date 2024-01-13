@@ -67,12 +67,12 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                if (data.success) {
-                    // Redirect or handle successful login
-                    window.location.href = 'index.php';
+                if (data.success === true && data.role === 'admin') {
+                    console.log(data.role);
+                    window.location.href = 'http://localhost/Med-El-Bachiri_Wiki/index.php?page=dashboard';
+                } else if (data.success === true && data.role === 'author') {
+                    window.location.href = 'http://localhost/Med-El-Bachiri_Wiki/index.php?page=home';
                 } else {
-                    // Handle login failure, display appropriate error message
                     document.getElementById('loginErrMessage').innerText = data.message;
                 }
             })
