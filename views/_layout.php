@@ -39,7 +39,7 @@
                                 <?php if (isset($user->role) && $user->role === 'admin') { ?>
                                 <a href="index.php?page=dashboard" class="text-gray-300 m-2 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
                                 <?php } elseif (isset($user->role) && $user->role === 'author') { ?>
-                                <a href="index.php?page=wikis" class="text-gray-300 m-2 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Wikis</a>
+                                <a href="index.php?page=wikis" class="text-gray-300 m-2 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">My Wikis</a>
                                 <?php } ?>
                             </div>
                         </div>
