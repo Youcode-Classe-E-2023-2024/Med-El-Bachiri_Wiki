@@ -88,7 +88,7 @@
 
 <!-- footer start -->
 <footer class="border-t mt-12 pt-12 pb-32 mx-44 px-4 lg:px-0">
-    <?php if (isset($user->role) && $user->role !== 'admin') ?>
+    <?php if ($page !== 'dashboard' && $page !== 'wikis') { ?>
     <div class="flex flex-wrap">
         <div class="w-full lg:w-2/5">
             <p class="text-gray-600 hidden lg:block p-0 lg:pr-12">
@@ -128,6 +128,7 @@
         </div>
 
     </div>
+    <?php } ?>
 </footer>
 <!-- footer end -->
 
