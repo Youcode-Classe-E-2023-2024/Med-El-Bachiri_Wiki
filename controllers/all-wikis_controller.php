@@ -16,3 +16,21 @@ if (isset($_GET['search_by_title'])) {
     echo json_encode($output);
     exit;
 }
+
+if (isset($_GET['search_by_tag'])) {
+    $input = $_GET['search_by_tag'];
+    $searchedWikisIDs = Search::searchByTag($input);
+    $output = [];
+    foreach ($searchedWikisIDs as $wiki) {
+        try {
+            $wikiDetail = Wiki::getWiki($wiki['id']);
+        } catch (Exception $e) {
+            exit($e->getMessage());
+        }
+
+        $output[] = $wikiDetail;
+    }
+    echo json_encode($output);
+    exit;
+}
+
