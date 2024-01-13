@@ -86,51 +86,34 @@
     </main>
 <!-- main end -->
 
-<!-- footer start -->
-<footer class="border-t mt-12 pt-12 pb-32 mx-44 px-4 lg:px-0">
-    <?php if ($page !== 'dashboard' && $page !== 'wikis') { ?>
-    <div class="flex flex-wrap">
-        <div class="w-full lg:w-2/5">
-            <p class="text-gray-600 hidden lg:block p-0 lg:pr-12">
-                Boisterous he on understood attachment as entreaties ye devonshire.
-                In mile an form snug were been sell.
-                Extremely ham any his departure for contained curiosity defective.
-                Way now instrument had eat diminution melancholy expression sentiments stimulated.
-            </p>
+<?php if ($page !== 'dashboard' && $page !== 'wikis') { ?>
+    <footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <img src="<?= PATH . 'assets/img/wiki-Logo.png'?>" class="h-8" alt="Flowbite Logo" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Wiki Website</span>
+                </a>
+                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                    <li>
+                        <a href="#" class="hover:underline m-4 md:me-6">About</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline m-4 md:me-6">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=all-wikis" class="hover:underline m-4 md:me-6">All Wikis</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Wiki™</a>. All Rights Reserved.</span>
         </div>
-
-        <div class="w-full mt-6 lg:mt-0 md:w-1/2 lg:w-1/5">
-            <h6 class="font-semibold text-gray-700 mb-4">Company</h6>
-            <ul>
-                <li> <a href="#" class="block text-gray-600 py-2">Team</a> </li>
-                <li> <a href="#" class="block text-gray-600 py-2">About us</a> </li>
-                <li> <a href="#" class="block text-gray-600 py-2">Press</a> </li>
-            </ul>
-        </div>
-
-        <div class="w-full mt-6 lg:mt-0 md:w-1/2 lg:w-1/5">
-            <h6 class="font-semibold text-gray-700 mb-4">Content</h6>
-            <ul>
-                <li> <a href="#" class="block text-gray-600 py-2">Blog</a> </li>
-                <li> <a href="#" class="block text-gray-600 py-2">Privacy Policy</a> </li>
-                <li> <a href="#" class="block text-gray-600 py-2">Terms & Conditions</a> </li>
-                <li> <a href="#" class="block text-gray-600 py-2">Documentation</a> </li>
-            </ul>
-        </div>
-
-        <div class="w-full mt-6 lg:mt-0 md:w-1/2 lg:w-1/5">
-            <h6 class="font-semibold text-gray-700 mb-4">Company</h6>
-            <ul>
-                <li> <a href="#" class="block text-gray-600 py-2">Team</a> </li>
-                <li> <a href="#" class="block text-gray-600 py-2">About us</a> </li>
-                <li> <a href="#" class="block text-gray-600 py-2">Press</a> </li>
-            </ul>
-        </div>
-
-    </div>
-    <?php } ?>
-</footer>
-<!-- footer end -->
+    </footer>
+<?php } ?>
 
 
 <script>
