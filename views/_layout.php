@@ -17,29 +17,19 @@
         <nav id="NAV" class="m-auto bg-gray-800">
             <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div class="relative flex h-16 items-center justify-between">
-                    <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                        <!-- Mobile menu button-->
-                        <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-                            <span class="absolute -inset-0.5"></span>
-                            <span class="sr-only">Open main menu</span>
-                            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex flex-1 items-center sm:items-stretch justify-start">
                         <div class="flex flex-shrink-0  items-center">
                             <a href="index.php"><img class="h-12 w-auto hover:opacity-70" src="<?= PATH . 'assets/img/wiki-Logo.png' ?>" alt="Your Company"></a>
                         </div>
                         <div class="hidden sm:ml-6 sm:block">
                             <div class="flex space-x-4">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                                <a href="index.php?page=home" class="bg-gray-900 hover:bg-gray-800 m-2 text-white rounded-md px-3 py-2 text-sm" aria-current="page">Home</a>
-                                <a href="index.php?page=all-wikis" class="bg-gray-900 hover:bg-gray-800 m-2 text-white rounded-md px-3 py-2 text-sm" aria-current="page">See All Wikis</a>
+                                <a href="index.php?page=home" class="bg-gray-900 hover:bg-gray-700 hover:text-white m-2 text-white rounded-md px-3 py-2 text-sm" aria-current="page">Home</a>
+                                <a href="index.php?page=all-wikis" class="bg-gray-900 hover:bg-gray-700 hover:text-white  m-2 text-white rounded-md px-3 py-2 text-sm" aria-current="page">See All Wikis</a>
                                 <?php if (isset($user->role) && $user->role === 'admin') { ?>
-                                <a href="index.php?page=dashboard" class="text-gray-300 m-2 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
+                                <a href="index.php?page=dashboard" class="bg-gray-900 hover:bg-gray-700 hover:text-white m-2 text-white rounded-md px-3 py-2 text-sm">Dashboard</a>
                                 <?php } elseif (isset($user->role) && $user->role === 'author') { ?>
-                                <a href="index.php?page=wikis" class="text-gray-300 m-2 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">My Wikis</a>
+                                <a href="index.php?page=wikis" class="bg-gray-900 hover:bg-gray-700 hover:text-white m-2 text-white rounded-md px-3 py-2 text-sm">My Wikis</a>
                                 <?php } ?>
                             </div>
                         </div>
@@ -57,22 +47,52 @@
                         </div>
                     </div> <?php } ?>
 
+                    <!-- dropdown menu start -->
                     <?php if (isset($_SESSION['user_id'])) { ?>
-                        <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                            <img class="w-8 h-8 rounded-full border border-black" src="<?= PATH . 'assets/img/' . $user->image ?>" alt="user photo">
-                        </button>
-                        <!-- Dropdown menu -->
-                        <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 absolute shadow-xl border border-gray-600" style="top: 50px; right: 0; display: none;" id="user-dropdown">
-                            <div class="px-4 py-3">
-                                <span class="block text-sm text-gray-900 dark:text-white"><?= $user->username ?></span>
-                                <span class="block text-sm  text-gray-500 truncate dark:text-gray-400"><?= $user->email ?></span>
+                        <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12" style="z-index: 999;">
+                            <div class="flex items-center justify-center p-12">
+                                <div class=" relative inline-block text-left dropdown">
+                                    <span class="rounded-md shadow-sm">
+                                        <button class="inline-flex justify-center w-full px-2 py-1 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
+                                             type="button" aria-haspopup="true" aria-expanded="true" aria-controls="headlessui-menu-items-117">
+                                        <img src="<?= PATH . 'assets/img/' . $user->image ?>" class="h-10 rounded-full shadow-xl">
+                                        <svg class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                        </button>
+                                    </span>
+                                    <div class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
+                                        <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
+                                            <div class="px-4 py-3">
+                                                <p class="text-sm leading-5"><?= $user->username ?></p>
+                                                <p class="text-sm font-medium leading-5 text-gray-900 truncate"><?= $user->email ?></p>
+                                            </div>
+                                            <div class="py-1">
+                                                <?php if ($user->role === 'author') : ?>
+                                                <a href="index.php?page=wikis" tabindex="0" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"  role="menuitem" >My Wikis</a>
+                                                <?php endif; ?>
+                                                <?php if ($user->role === 'admin') : ?>
+                                                <a href="index.php?page=dashboard" tabindex="0" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"  role="menuitem" >Dashboard</a>
+                                                <?php endif; ?>
+                                                <a href="index.php?page=all-wikis" tabindex="1" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"  role="menuitem" >All Wikis</a>
+                                                <span role="menuitem" tabindex="-1" class="flex justify-between w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 cursor-not-allowed opacity-50" aria-disabled="true">New feature (soon)</span>
+                                                <a href="javascript:void(0)" tabindex="2" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem" >Home</a></div>
+                                            <div class="py-1">
+                                                <button onclick="logOut()" tabindex="3" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"  role="menuitem" >Sign out</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <ul class="py-2" aria-labelledby="user-menu-button">
-                                <li>
-                                    <button onclick="logOut()" class="mx-4" name="logout_btn">Log Out</button>
-                                </li>
-                            </ul>
                         </div>
+
+                        <style>
+                            .dropdown:focus-within .dropdown-menu {
+                                opacity:1;
+                                transform: translate(0) scale(1);
+                                visibility: visible;
+                            }
+                        </style>
+                        <!-- dropdown menu end -->
+
                     <?php }?>
 
                 </div>
@@ -86,7 +106,8 @@
     </main>
 <!-- main end -->
 
-<?php if ($page !== 'dashboard' && $page !== 'wikis') { ?>
+<!-- footer start-->
+<?php if ($page !== 'dashboard' && $page !== 'wikis' && $page !== 'login' && $page !== 'register') { ?>
     <footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
@@ -102,7 +123,7 @@
                         <a href="#" class="hover:underline m-4 md:me-6">Privacy Policy</a>
                     </li>
                     <li>
-                        <a href="index.php?page=all-wikis" class="hover:underline m-4 md:me-6">All Wikis</a>
+                        <a href="#" class="hover:underline m-4 md:me-6">All Wikis</a>
                     </li>
                     <li>
                         <a href="#" class="hover:underline">Contact</a>
@@ -114,20 +135,8 @@
         </div>
     </footer>
 <?php } ?>
+<!-- footer end -->
 
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Get the necessary elements
-        const userMenuButton = document.getElementById('user-menu-button');
-        const userDropdown = document.getElementById('user-dropdown');
-
-        userMenuButton.addEventListener('click', ()=>{
-            userDropdown.style.display = userDropdown.style.display === 'none' ? 'block' : 'none';
-
-        });
-    });
-</script>
     <script src="<?= PATH ?>assets/js/main.js"></script>
     <script src="<?= PATH ?>assets/js/DOM.js"></script>
     <script src="<?= PATH ?>assets/js/register.js"></script>
