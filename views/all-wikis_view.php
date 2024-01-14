@@ -1,4 +1,3 @@
-<?php //dd(Search::searchForTitles('2')); ?>
 <section class="dark:bg-gray-800 dark:text-gray-100">
 
      <div class="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
