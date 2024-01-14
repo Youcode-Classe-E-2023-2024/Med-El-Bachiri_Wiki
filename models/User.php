@@ -140,4 +140,12 @@ class User
     }
 
 
+    static function countUsers() {
+        global $db;
+
+        $query = 'SELECT COUNT(*) AS total_users FROM users';
+        $result = $db->query($query);
+        return $result->fetchColumn();
+    }
+
 }
