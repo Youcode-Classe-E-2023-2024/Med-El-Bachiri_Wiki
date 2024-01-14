@@ -4,6 +4,12 @@ if($currentUser->role !== 'admin'){
     header('location: index.php?page=home');
 }
 
+// archive wiki
+if (isset($_POST['archiveWikiBtn']) && isset($_POST['wikiID'])) {
+    $wiki = Wiki::archiveWiki($_POST['wikiID']);
+    header('location: index.php?page=dashboard');
+}
+
 // redirect to login if not logged in
 if (!isset($_SESSION['user_id'])) {
     header('location: index.php?page=login');
