@@ -71,4 +71,13 @@ class Category
         ");
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    static function countCategories() {
+        global $db;
+
+        $query = 'SELECT COUNT(*) AS total_categories FROM categories';
+        $result = $db->query($query);
+        return $result->fetchColumn();
+    }
+
 }
