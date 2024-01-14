@@ -174,4 +174,12 @@ class Wiki
             }
         }
     }
+
+    static function countWikis() {
+        global $db;
+        $query = 'SELECT COUNT(*) AS total_wikis FROM wikis';
+        $result = $db->query($query);
+        return $result->fetchColumn();
+    }
+
 }
