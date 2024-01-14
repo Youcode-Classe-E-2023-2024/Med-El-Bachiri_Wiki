@@ -178,6 +178,8 @@ function editCat(catId) {
         })
         .then(data => {
             closeEditForm();
+            getAllCatAdmin();
+            alert('CAT EDITED SUCCESS !')
         })
         .then(()=>{
             getAllCatAdmin();
@@ -200,7 +202,12 @@ function deleteCat(id) {
             console.log(response.status);
             return response.json();
         })
-        .then(data => console.log(data))
+        .then(data => {
+            if (data) {
+                alert('CAT DELETED !');
+                getAllCatAdmin();
+            }
+        })
         .catch(error => console.error(error));
 
 }
