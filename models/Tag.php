@@ -60,4 +60,13 @@ class Tag
 
         return $stm->execute();
     }
+
+    static function countTags() {
+        global $db;
+
+        $query = 'SELECT COUNT(*) AS total_tags FROM tags';
+        $result = $db->query($query);
+        return $result->fetchColumn();
+    }
+
 }
