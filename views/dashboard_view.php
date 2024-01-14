@@ -92,7 +92,7 @@
                                 d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"
                         ></path>
                     </svg>
-                    <span class="">Archived Wikis</span>
+                    <span class="">Statistic</span>
                 </div>
 
 
@@ -202,7 +202,7 @@
                     </svg>
                 </div>
                 <div class="text-right">
-                    <p class="text-2xl"><?= $usersNumber ?></p>
+                    <p class="text-2xl"><?= User::countUsers() ?></p>
                     <p>Users</p>
                 </div>
             </div>
@@ -215,7 +215,7 @@
                     </svg>
                 </div>
                 <div class="text-right">
-                    <p class="text-2xl"><?= $wikisNumber ?></p>
+                    <p class="text-2xl"><?= Wiki::countWikis() ?></p>
                     <p>Wikis</p>
                 </div>
             </div>
@@ -228,7 +228,7 @@
                     </svg>
                 </div>
                 <div class="text-right">
-                    <p class="text-2xl"><?= $categoriesNumber ?></p>
+                    <p class="text-2xl"><?= Category::countCategories() ?></p>
                     <p>Categories</p>
                 </div>
             </div>
@@ -246,7 +246,7 @@
 
                 </div>
                 <div class="text-right">
-                    <p class="text-2xl"><?= $tagsNumber ?></p>
+                    <p class="text-2xl"><?= Tag::countTags() ?></p>
                     <p>Tags</p>
                 </div>
             </div>
@@ -257,3 +257,32 @@
         </div>
     </div>
 </div>
+
+<script>
+    var xValues = ["Wikis", "Categories", "Tags", "Users"];
+    var yValues = [<?= Wiki::countWikis() ?>, <?= Category::countCategories() ?>, <?= Tag::countTags() ?>, <?= User::countUsers() ?>];
+    var barColors = [
+        "#b91d47",
+        "#00aba9",
+        "#2b5797",
+        "#e8c3b9",
+        "#1e7145"
+    ];
+
+    new Chart("myChart", {
+        type: "pie",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "Wiki Statistics"
+            }
+        }
+    });
+</script>
