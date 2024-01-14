@@ -94,9 +94,13 @@ class Wiki
         return $stm->execute();
     }
 
-    function archiveThisWiki()
+    static function archiveWiki($wiki_id): bool
     {
-        $this->status = 'archived';
+        global $db;
+        $query = "UPDATE wikis SET status = 'archived' WHERE id = :wiki_id";
+        $stm = $db->prepare($query);
+        $stm->bindValue(':wiki_id', $wiki_id, PDO::PARAM_INT);
+        return $stm->execute();
     }
 
     static function delete($id): bool
